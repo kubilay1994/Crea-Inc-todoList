@@ -18,7 +18,7 @@ class TodoRepo:
     async def get_user_todo(self, todo_id: int, user_id: int) -> Optional[Todo]:
         user: Optional[Todo] = (
             await self.db.execute(
-                select(Todo).where(Todo.id == todo_id and Todo.user_id == user_id)
+                select(Todo).where((Todo.id == todo_id) & (Todo.user_id == user_id))
             )
         ).scalar()
         return user
@@ -64,8 +64,6 @@ class TodoRepo:
         await self.db.commit()
         return entity
 
-
-
     async def delete_todos(self, todo_ids: List[int]):
         res = await self.db.execute(delete(Todo).where(Todo.id.in_(todo_ids)))
         await self.db.commit()
@@ -73,7 +71,7 @@ class TodoRepo:
 
     async def delete_user_todo(self, todo_id: int, user_id: int) -> Optional[int]:
         res = await self.db.execute(
-            delete(Todo).where(Todo.id == todo_id and Todo.user_id == user_id)
+            delete(Todo).where((Todo.id == todo_id) & (Todo.user_id == user_id))
         )
         await self.db.commit()
         return todo_id if res.rowcount == 1 else None

@@ -20,7 +20,7 @@ from app.services.todos.TodoService import TodoService
 from server.security import user_auth
 
 
-admin = APIBlueprint("admin", __name__)
+from server.routes.admin import admin
 
 
 @admin.route("todos")

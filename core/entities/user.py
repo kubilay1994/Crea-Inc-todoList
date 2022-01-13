@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from app.db import Base
 
@@ -14,3 +15,4 @@ class User(Base):
 
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role", back_populates="users")
+    role_name = association_proxy("role", "name")

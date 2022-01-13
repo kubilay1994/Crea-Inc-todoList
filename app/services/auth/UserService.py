@@ -15,6 +15,9 @@ class UserService:
         self.repo = repo
         self.token_service = token_service
 
+    async def get_users(self):
+        return await self.repo.get_users()
+
     async def login(self, user: User) -> Optional[TokenInfo]:
         entity = await self.repo.get_user(user.username)
 

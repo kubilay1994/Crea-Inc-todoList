@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 from sqlalchemy.ext.asyncio import async_scoped_session
 from sqlalchemy import select, delete
@@ -16,6 +16,12 @@ class UserRepo:
 
     def __init__(self, db: async_scoped_session):
         self.db = db
+
+    async def get_users(self) -> List[User]:
+        users_result = await self.db.execute(
+            select(User).options(joinedload(User.role))
+        )
+        return users_result.scalars().all()
 
     async def get_user(self, user_name: str) -> Optional[User]:
         user: Optional[User] = (

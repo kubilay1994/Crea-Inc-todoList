@@ -11,11 +11,18 @@ from app.services.auth.UserService import UserService
 from main import dep_container
 from lagom.decorators import magic_bind_to_container
 from apiflask.decorators import output
-from server.schemas import UserOutSchema, UserSchema, TokenInfoSchema, RegisterSchema
+from server.schemas import (
+    UserOutSchema,
+    UserSchema,
+    TokenInfoSchema,
+    RegisterSchema,
+    UserInfoSchema,
+)
 from app.services.roles.role import RoleService
 
 
 user_route = APIBlueprint("users", __name__)
+
 
 
 @user_route.post("/login")

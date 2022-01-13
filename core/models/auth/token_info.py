@@ -2,7 +2,6 @@
 
 
 from datetime import datetime
-from typing import Optional
 
 
 from dataclasses import dataclass
@@ -12,4 +11,3 @@ from dataclasses import dataclass
 class TokenInfo:
     expired_at: datetime
     access_token: str
-    refresh_token: Optional[str] = None
