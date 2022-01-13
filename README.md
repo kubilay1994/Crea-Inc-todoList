@@ -17,6 +17,7 @@ flask run (runs in debug)
 # Swagger
 
 Go to /docs for swagger documentation
+
 Go to /redoc for redoc documentation
 
 
