@@ -1,9 +1,18 @@
 # Crea-Inc-todoList
 
+Todolist application with swagger and bearer token authentication
 
-İnstallation / Requirements 
-___________________________________________
+# Installation / Requirements 
+__________________________________________
 Python 3.9+
+
+
+```` 
+python -m venv .venv
+pip install -r ./requirements.txt
+flask run (runs in debug)
+
+```` 
 
 
 
